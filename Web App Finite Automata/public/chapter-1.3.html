@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1.3: Regular Expressions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header, nav, section {
+            margin-bottom: 20px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .nav-links a {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .simulation-box, .quiz-box {
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        #regex-canvas {
+            width: 100%;
+            height: 300px;
+            background: #f8f9fa;
+            border: 1px dashed #ccc;
+            margin-bottom: 15px;
+        }
+        .quiz-question {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Chapter 1.3: Regular Expressions</h1>
+        <nav class="nav-links">
+            <a href="chapter-1.2.html">Previous: Nondeterminism</a>
+            <a href="chapter-1.4.html">Next: Nonregular Languages</a>
+            <a href="../homepage.html">Home</a>
+        </nav>
+    </header>
+
+    <!-- Simulation Section -->
+    <section id="simulation">
+        <h2 class="section-title">Simulation</h2>
+        <div class="simulation-box">
+            <h3>Regex-to-Automata Converter</h3>
+            <div id="regex-canvas"></div>
+            <input type="text" placeholder="Enter regex (e.g., (a|b)*abb)" id="regex-input">
+            <button onclick="runRegexConverter()">Convert</button>
+            <div id="regex-simulation-result"></div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz">
+        <h2 class="section-title">Quiz</h2>
+        <div class="quiz-box">
+            <div class="quiz-question">
+                <p>Question 1: Which regex matches the language {w | w contains exactly two 0s}?</p>
+            </div>
+            <div class="quiz-question">
+                <p>Question 2: Write a regex for strings starting with 'a' and ending with 'b'.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function runRegexConverter() {
+        const regex = document.getElementById("regex-input").value;
+        document.getElementById("regex-simulation-result").innerText =
+            `Converting regex: ${regex}... (Regex conversion logic here)`;
+    }
+</script>
+</body>
+</html>
