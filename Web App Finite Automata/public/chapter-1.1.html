@@ -24,7 +24,7 @@
         }
         .nav-links {
             display: flex;
-            gap: 10px;
+            justify-content: space-between;
             margin-bottom: 30px;
         }
         .nav-links a {
@@ -38,7 +38,7 @@
             font-size: 24px;
             margin-bottom: 10px;
         }
-        .simulation-box, .quiz-box {
+        .simulation-box, .quiz-box, .progress-box, .gamification-box {
             border: 2px solid #4CAF50;
             padding: 20px;
             border-radius: 10px;
@@ -54,13 +54,37 @@
         .quiz-question {
             margin-bottom: 15px;
         }
+        .progress-bar {
+            height: 20px;
+            background: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #4CAF50;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        .badges {
+            display: flex;
+            gap: 10px;
+        }
+        .badge {
+            background: #FFD700;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
-<body>
+<body data-chapter="1.1">
 <div class="container">
     <header>
         <h1>Chapter 1.1: Finite Automata</h1>
         <nav class="nav-links">
+            <a href="chapter-1.0.html">Previous: Introduction</a>
             <a href="chapter-1.2.html">Next: Nondeterminism</a>
             <a href="../homepage.html">Home</a>
         </nav>
@@ -92,6 +116,28 @@
             </div>
         </div>
     </section>
+
+    <!-- Progress Tracking Section -->
+    <section id="progress">
+        <h2 class="section-title">Your Progress</h2>
+        <div class="progress-box">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 50%;"></div>
+            </div>
+            <p>Chapter Completion: 50%</p>
+        </div>
+    </section>
+
+    <!-- Gamification Section -->
+    <section id="gamification">
+        <h2 class="section-title">Achievements</h2>
+        <div class="gamification-box">
+            <div class="badges">
+                <div class="badge">DFA Novice</div>
+                <div class="badge">Quiz Master</div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <script>
@@ -99,6 +145,21 @@
         const input = document.getElementById("test-input").value;
         document.getElementById("simulation-result").innerText =
             `Processing input: ${input}... (Simulation logic here)`;
+    }
+
+    // Example function to update progress
+    function updateProgress(percentage) {
+        const progressFill = document.getElementById('progress-fill');
+        progressFill.style.width = percentage + '%';
+    }
+
+    // Example function to add a new badge
+    function addBadge(badgeName) {
+        const badgesContainer = document.querySelector('.badges');
+        const newBadge = document.createElement('div');
+        newBadge.className = 'badge';
+        newBadge.innerText = badgeName;
+        badgesContainer.appendChild(newBadge);
     }
 </script>
 </body>
