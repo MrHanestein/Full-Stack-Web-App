@@ -1,9 +1,9 @@
 // src/DFATester.jsx
 import React, { useState, useEffect, useRef } from "react";
 import * as d3 from "d3";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./contexts/AuthContext";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "./AuthContext"; // or wherever you export db from
+import { db } from "./firebase"; // or wherever you export db from
 import { CSVLink } from "react-csv";
 import { Bar } from "react-chartjs-2";
 import {

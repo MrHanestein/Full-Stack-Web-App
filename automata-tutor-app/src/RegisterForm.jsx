@@ -1,6 +1,6 @@
 // src/RegisterForm.jsx
 import React, { useState } from "react";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./contexts/AuthContext";
 import { Link } from "react-router-dom";
 
 export default function RegisterForm() {
@@ -18,7 +18,7 @@ export default function RegisterForm() {
         try {
             await register(email, password);
         } catch (err) {
-            setError("Registration failed.");
+            setError(err.message);
         }
     };
 

@@ -1,7 +1,8 @@
 // src/LoginForm.jsx
 import React, { useState } from "react";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./contexts/AuthContext";
 import { Link } from "react-router-dom";
+import {useEffect} from "react";
 
 export default function LoginForm() {
     const { login, loginWithGoogle } = useAuth();
@@ -16,6 +17,12 @@ export default function LoginForm() {
         } catch (err) {
             setError("Login failed. Check credentials.");
         }
+        useEffect(() => {
+            if (currentUser) {
+                //check code
+               navigate("/Homepage");
+            }
+        }, [currentUser]);
     };
 
     return (

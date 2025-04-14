@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import AppRouter from "./AppRouter";
-import { AuthProvider } from "./AuthContext";
+import { AuthProvider } from "./firebase";
 import "./styles.css";
 import "./index.css"; // if you want Tailwind (where you put @tailwind base/components/utilities)
 

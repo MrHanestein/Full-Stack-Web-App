@@ -1,6 +1,6 @@
 // src/ChapterPage.jsx
 import React from "react";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./contexts/AuthContext";
 
 export default function ChapterPage({ title, description }) {
     const { currentUser } = useAuth();
