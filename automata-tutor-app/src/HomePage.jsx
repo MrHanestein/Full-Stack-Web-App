@@ -1,6 +1,7 @@
 // src/HomePage.jsx
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom'; // for routing // your MUI button
+
 import {
     AppBar,
     Box,
@@ -21,37 +22,62 @@ import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import { keyframes } from '@emotion/react';
 
 // =============================
-// Define a custom dark purple futuristic theme
-const futuristicTheme = createTheme({
+// Defines a custom dark purple futuristic theme for my app globally
+export const futuristicTheme = createTheme({
     palette: {
-        mode: 'dark',
+        mode: "light",
         primary: {
-            main: '#1B0033', // Deep dark purple
+            main: '#6A1B9A',
+            contrastText:'#FFFFFF'// Deep dark purple
         },
         secondary: {
-            main: '#9D4EDD', // Vibrant purple accent
+            main: '#9C27B0',
+            contrastText:'#FFFFFF'// Vibrant purple accent
         },
         background: {
             default: '#121212',
             paper: '#1e1e1e',
         },
         text: {
-            primary: '#E0E0E0',
-            secondary: '#B0B0B0',
+            primary: '#000000',
+            secondary: '#333333',
+            contrastText: '#757575'
         },
+        contrastThreshold: 4.5,
     },
     typography: {
-        fontFamily: "'Segoe UI', sans-serif",
-        h1: { fontWeight: 700 },
-        h2: { fontWeight: 600 },
+        fontFamily: "'Inter', 'Segoe UI', sans-serif",
+        h1: { fontWeight: 700, fontSize: '2.5 rem' },
+        h2: { fontWeight: 600, fontSize: '2.5 rem' },
+        body: { fontSize: '1.1rem', fontWeight: 600 },
+        allVariants:{
+            color:"#000000",
+        }
     },
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                html: {
+                    height: '100%',
+                },
+                body: {
+                    height: '100%',
+                    '#root': {
+                        minHeight: '100vh',
+                        display: 'flex',
+                        flexDirection: 'column'
+                    }
+                }
+            }
+        }
+    }
 });
 
 // Keyframes for a subtle pulse animation
 const pulse = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
 `;
 
 // =============================
@@ -217,6 +243,24 @@ export default function HomePage() {
                             Login
                         </Button>
                     </Box>
+                    <Box sx={{ mt: 2, textAlign: "center" }}>
+                        <Button
+                            component={RouterLink}
+                            to="/dashboard"
+                            variant="outlined"
+                            sx={{ mr: 1 }}
+                        >
+                            My Profile
+                        </Button>
+                        <Button
+                            component={RouterLink}
+                            to="/update-profile"
+                            variant="outlined"
+                        >
+                            Update Profile
+                        </Button>
+                    </Box>
+
                 </Box>
 
                 {/* Resources Section */}

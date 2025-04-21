@@ -660,7 +660,7 @@ const simulateCurrentDiagram = (chapter, diagramIndex, testString) => {
         }
     });
     const startState = states[0]?.id;
-    if (!startState) return "❌ No start state defined";
+    if (!startState) return "❌ There is no start state defined";
 
     if (chapter === "1.2") {
         // NFA simulation using recursion.

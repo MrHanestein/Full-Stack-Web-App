@@ -5,6 +5,7 @@ import { AuthProvider } from "./firebase";
 import "./styles.css";
 import "./index.css"; // if you want Tailwind (where you put @tailwind base/components/utilities)
 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <AuthProvider>

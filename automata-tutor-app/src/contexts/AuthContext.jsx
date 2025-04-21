@@ -1,6 +1,15 @@
 // src/contexts/AuthContext.js
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { auth, db } from "../firebase"; // from firebase.js
+import React, {createContext, useContext, useEffect, useState} from "react";
+import {
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    sendPasswordResetEmail,
+    signInWithEmailAndPassword,
+    signOut,
+    updateEmail as fbUpdateEmail,
+    updatePassword as fbUpdatePassword
+} from "firebase/auth";
+import {auth} from "../firebase";
 
 const AuthContext = createContext();
 
@@ -9,46 +18,46 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState();
-    const [loading, setLoading] = useState(true);
+    const [currentUser, setCurrentUser] = useState(null);
+    const [loading, setLoading]       = useState(true);
 
     // Sign up
     function signup(email, password) {
-        return auth.createUserWithEmailAndPassword(email, password);
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
     // Log in
     function login(email, password) {
-        return auth.signInWithEmailAndPassword(email, password);
+        return signInWithEmailAndPassword(auth, email, password);
     }
 
     // Log out
     function logout() {
-        return auth.signOut();
+        return signOut(auth);
     }
 
     // Reset password
     function resetPassword(email) {
-        return auth.sendPasswordResetEmail(email);
+        return sendPasswordResetEmail(auth, email);
     }
 
     // Update email
     function updateEmail(email) {
-        return currentUser.updateEmail(email);
+        // Note: fbUpdateEmail takes (user, newEmail)
+        return fbUpdateEmail(currentUser, email);
     }
 
     // Update password
     function updatePassword(password) {
-        return currentUser.updatePassword(password);
+        return fbUpdatePassword(currentUser, password);
     }
 
-    // Listen for auth state changes once on mount
+    // Listen for auth changes on mount
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
+        return onAuthStateChanged(auth, user => {
             setCurrentUser(user);
             setLoading(false);
         });
-        return unsubscribe;
     }, []);
 
     const value = {
@@ -58,12 +67,11 @@ export function AuthProvider({ children }) {
         logout,
         resetPassword,
         updateEmail,
-        updatePassword,
+        updatePassword
     };
 
     return (
         <AuthContext.Provider value={value}>
-            {/* Only render children once we know the user status */}
             {!loading && children}
         </AuthContext.Provider>
     );
