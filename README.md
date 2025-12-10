@@ -23,7 +23,7 @@ This project started as my final year dissertation and evolved into a production
   - Test input strings against the constructed automaton
 
 - 💬 **Real-time chatroom**  
-  A simple chat so students can ask questions, share hints and support each other while working through exercises.
+  A simple chat so students can ask questions, share hints, and support each other while working through exercises.
 
 - 🏆 **Leaderboard & XP system**  
   Points awarded for quiz completion and activity, displayed on a leaderboard to encourage engagement.
@@ -56,7 +56,7 @@ This project started as my final year dissertation and evolved into a production
   - Additional storage/tracking of student activity and quiz results
 
 - **Gemini API**  
-  - Used in “Custom mode” to provide automated hints or explanations
+  - Used in “Custom mode” to provide automated hints or explanations alongside giggles chatbot.
 
 ---
 
@@ -82,9 +82,9 @@ You can find the main app code under:
 
 ---
 
-## 🚀 Getting Started (Local Development)
+## Getting Started (Local Development)
 
-> ⚠️ Before running locally, make sure you **do not commit any real API keys or secrets**. Store them in `.env.local` and add them to `.gitignore`.
+> ⚠️ Caution. Before running locally, make sure you **do not commit any real API keys or secrets**. Store them in `.env.local` and add them to `.gitignore`.
 
 1. **Clone the repository**
 
